@@ -11,6 +11,12 @@ def main():
     y = SCREEN_HEIGHT / 2
     player = Player(x, y)
 
+    updatable=pygame.sprite.Group()
+    drawable=pygame.sprite.Group()
+
+    updatable.add(player)
+    drawable.add(player)
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -19,11 +25,14 @@ def main():
         dt+=delta_time
         print(f"Delta Time: {delta_time}")
 
-
-        player.update(delta_time)
+        for i in updatable:
+            i.update(delta_time)
+        
 
         screen.fill((0,0,0))
-        player.draw(screen)
+        for j in drawable:
+            j.draw(screen)
+            
         pygame.display.flip()
 if __name__ == "__main__":
     main()
