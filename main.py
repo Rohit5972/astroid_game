@@ -19,6 +19,9 @@ def main():
         dt+=delta_time
         print(f"Delta Time: {delta_time}")
 
+
+        player.update(delta_time)
+
         screen.fill((0,0,0))
         player.draw(screen)
         pygame.display.flip()
